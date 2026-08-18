@@ -1,34 +1,78 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>RobloxNames — Live Username Checker</title>
+<title>RobloxNames — Tracker</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@500;600;700;800&display=swap');
-*{box-sizing:border-box}body{margin:0;background:#090a0d;color:#f4f5f7;font-family:Manrope,Arial,sans-serif}
-header{height:70px;border-bottom:1px solid #20232a;display:flex;align-items:center;padding:0 5%;gap:42px;background:#0b0c0fee;position:sticky;top:0;z-index:3}.brand{display:flex;gap:10px;align-items:center}.logo{width:34px;height:34px;border-radius:9px;background:#fff;color:#08090b;display:grid;place-items:center;font-weight:800}.brand b{display:block;font-size:14px}.brand small{font:9px 'DM Mono';color:#70757f;letter-spacing:.12em}nav{display:flex;gap:25px;flex:1}nav span{font-size:13px;color:#777c85}.on{color:#fff!important}.badge{font:9px 'DM Mono';border:1px solid #2d323a;padding:5px 7px;border-radius:5px;color:#8e96a2}
-main{max-width:1000px;margin:auto;padding:75px 24px}.eyebrow{font:10px 'DM Mono';color:#838994;letter-spacing:.15em}.hero h1{font-size:60px;line-height:1.02;letter-spacing:-.055em;margin:16px 0}.hero h1 i{color:#9298a2;font-style:normal}.hero p{color:#858a94;font-size:15px;max-width:650px}.search{height:62px;max-width:760px;margin-top:28px;border:1px solid #383c45;background:#121419;border-radius:11px;display:flex;align-items:center;padding:0 10px 0 17px;gap:12px}.search input{flex:1;background:none;border:0;outline:0;color:white;font-size:16px}.search button{height:42px;background:#f4f5f7;color:#090a0d;border:0;border-radius:8px;padding:0 17px;font-weight:800}.search button:disabled{opacity:.5}
-.result{margin-top:22px;max-width:760px;border:1px solid #272b33;border-radius:12px;background:#101217;min-height:120px;padding:22px}.result.hidden{display:none}.resultTop{display:flex;justify-content:space-between;align-items:center;gap:15px}.name{font-size:24px;font-weight:800}.status{font:10px 'DM Mono';letter-spacing:.08em;padding:7px 9px;border-radius:6px;border:1px solid #30343c}.available{color:#76d39d;border-color:#315b46}.taken{color:#e78484;border-color:#61383b}.invalid{color:#d7b66d;border-color:#5a4d2d}.unknown{color:#9298a2}.meta{font:10px 'DM Mono';color:#646a74;margin-top:14px}.error{color:#e78484;font-size:13px}
-.section{margin-top:65px}.sectionHead{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid #24272e;padding-bottom:12px}.sectionHead h2{font-size:16px;margin:0}.sectionHead span{font:10px 'DM Mono';color:#666c76}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}.card{background:#111318;border:1px solid #23262d;border-radius:9px;padding:15px}.card b{font-size:14px}.card p{margin:7px 0 0;font:10px 'DM Mono';color:#6f7580}.green{color:#76d39d}.red{color:#e78484}.yellow{color:#d7b66d}
-footer{border-top:1px solid #1d2026;color:#555a63;font:10px 'DM Mono';padding:24px 5%;display:flex;justify-content:space-between}
-@media(max-width:700px){nav{display:none}.hero h1{font-size:44px}.cards{grid-template-columns:1fr}.search button{padding:0 11px}}
+*{box-sizing:border-box}body{margin:0;background:#0b0d10;color:#dfe2e6;font-family:Manrope,Arial,sans-serif}a{color:#79b2df;text-decoration:none}button,select,input{font:inherit}
+header{height:70px;border-bottom:1px solid #292d33;display:flex;align-items:center;padding:0 5%;gap:35px;background:#15181c}.brand{display:flex;gap:10px;align-items:center}.logo{width:34px;height:34px;border-radius:8px;background:#fff;color:#101215;display:grid;place-items:center;font-weight:800}.brand b{display:block}.brand small{font:9px 'DM Mono';color:#70767e;letter-spacing:.12em}nav{display:flex;gap:24px;flex:1}nav a{font-size:13px;color:#777e87}.active{color:#fff!important}.live{font:9px 'DM Mono';color:#7bd09d;border:1px solid #315541;padding:6px 8px;border-radius:5px}
+main{max-width:1100px;margin:auto;padding:24px}.pager{display:flex;justify-content:flex-start;margin:0 0 18px}.date{background:#1c5e96;color:white;padding:9px 18px;border-radius:5px;font:13px 'DM Mono'}
+.layout{display:grid;grid-template-columns:1.55fr 1fr;gap:24px}.panel{border:1px solid #30343a;background:#1b1f23}.panelTitle{padding:10px 14px;border-bottom:1px solid #30343a;font-weight:700;color:#d8dbe0}.head,.row{display:grid;grid-template-columns:1.1fr 1.45fr .75fr;align-items:center}.head{padding:6px 14px;color:#c9cdd2;font-weight:700}.row{min-height:24px;padding:3px 14px;border-top:1px solid #42474e;font-size:12px}.row:hover{background:#23282e}.drop{color:#d6d9dd}.estimate{color:#c5cad0}.searches{text-align:right;color:#dfe2e6}.nameLink{color:#76aeda;cursor:pointer}.profile{border-bottom:1px solid #30343a;padding:16px}.profileTop{display:flex;gap:14px;align-items:center}.avatar{width:80px;height:80px;object-fit:cover;background:#2c3137;border-radius:7px}.profile h2{margin:0 0 4px;font-size:20px}.muted{color:#858c95;font:10px 'DM Mono'}.profileActions{margin-top:12px;display:flex;gap:8px}.btn{background:#2679b8;border:0;color:#fff;padding:8px 11px;border-radius:5px;cursor:pointer}.btn.alt{background:#282d33}.filters{padding:12px 14px}.field{display:grid;grid-template-columns:110px 1fr;align-items:center;gap:10px;margin:10px 0}.field label{font-weight:700;font-size:13px}.field select,.field input{width:100%;background:#20252a;border:1px solid #444a51;color:#e4e6e9;border-radius:5px;padding:8px}.recent{margin-top:280px}.recent .r{display:grid;grid-template-columns:65px 1fr 25px 1fr;padding:7px 12px;border-top:1px solid #363b41;font-size:12px}.recent .time{color:#d3d6da}.notice{margin-top:12px;color:#737a83;font:10px 'DM Mono'}.empty{padding:30px;text-align:center;color:#7d838b}.spinner{color:#8ca0b1;font:11px 'DM Mono';padding:14px}
+footer{border-top:1px solid #25292f;margin-top:30px;padding:20px 5%;font:10px 'DM Mono';color:#626972;display:flex;justify-content:space-between}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.recent{margin-top:20px}.head,.row{grid-template-columns:1fr 1.2fr .6fr}nav{display:none}}
 </style></head>
 <body>
-<header><div class="brand"><div class="logo">R</div><div><b>RobloxNames</b><small>USERNAME TRACKER</small></div></div><nav><span class="on">Checker</span><span>Tracker</span><span>Statistics</span></nav><div class="badge">LIVE CHECK</div></header>
+<header><div class="brand"><div class="logo">R</div><div><b>RobloxNames</b><small>USERNAME TRACKER</small></div></div><nav><a href="/">Checker</a><a class="active" href="#tracker">Tracker</a><a href="#search">Search</a><a href="#stats">Statistics</a></nav><div class="live">● LIVE</div></header>
 <main>
-<div class="eyebrow">✦ LIVE ROBLOX USERNAME CHECKER</div>
-<section class="hero"><h1>Check a name<br><i>before someone else does.</i></h1><p>Search a Roblox username and get its current validation result directly from Roblox's public username-validation service.</p>
-<form id="form" class="search"><input id="username" maxlength="20" autocomplete="off" spellcheck="false" placeholder="Try qz_"><button id="btn">Check</button></form>
-<div id="result" class="result hidden"></div></section>
-<section class="section"><div class="sectionHead"><h2>How it works</h2><span>NO .ROBLOSECURITY • NO LOGIN</span></div><div class="cards">
-<div class="card"><b>01 — Enter a name</b><p>Letters, numbers and underscores.</p></div>
-<div class="card"><b>02 — Roblox validates it</b><p>Your browser talks only to our small proxy; no account cookie is used.</p></div>
-<div class="card"><b>03 — See the result</b><p>Available, taken, unavailable, or unknown.</p></div>
-</div></section>
-</main><footer><span>RobloxNames v0.2</span><span>Availability can change immediately after a check.</span></footer>
+<div class="pager"><div class="date" id="now">18/08/2026 · --:--:--</div></div>
+<div class="layout">
+<section>
+<div class="panel"><div class="panelTitle">Names · <span id="count">0</span></div><div class="head"><span>Name</span><span>Drop Time</span><span>Searches</span></div><div id="rows"><div class="spinner">Loading tracker…</div></div></div>
+<div class="notice">Drop time is an observation/estimate field, not an official Roblox release timestamp. “Searches” counts searches made through RobloxNames.</div>
+</section>
+<aside>
+<div class="panel">
+<div class="panelTitle">Filters</div><div class="filters">
+<div class="field"><label>Length</label><select id="length"><option>Any</option><option>3</option><option>4</option><option>5</option><option>6+</option></select></div>
+<div class="field"><label>Language</label><select id="language"><option>Any</option><option>Letters</option><option>Numbers</option><option>Mixed</option></select></div>
+<div class="field"><label>Searches</label><input id="minSearches" type="number" min="0" value="0"></div>
+<button class="btn" onclick="loadTracker()">Submit</button>
+</div></div>
+<div class="panel recent"><div class="panelTitle">Recent Names</div><div id="recent"><div class="spinner">Loading…</div></div></div>
+</aside>
+</div>
+</main>
+<footer><span>RobloxNames · Tracker v0.3</span><span>Roblox user/profile data is loaded live.</span></footer>
 <script>
-const form=document.getElementById('form'),input=document.getElementById('username'),btn=document.getElementById('btn'),result=document.getElementById('result');
-function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-form.addEventListener('submit',async e=>{e.preventDefault();const u=input.value.trim();if(!u)return;btn.disabled=true;btn.textContent='Checking…';result.className='result';result.innerHTML='<div class="meta">CONTACTING ROBLOX…</div>';
-try{const r=await fetch('/api/check?username='+encodeURIComponent(u));const d=await r.json();if(!r.ok){result.innerHTML='<div class="error">'+esc(d.error||'Check failed.')+'</div>';return}
-result.innerHTML='<div class="resultTop"><div class="name">'+esc(d.username)+'</div><div class="status '+d.status+'">'+d.label+'</div></div><div class="meta">Checked '+new Date(d.checkedAt).toLocaleString()+' • Roblox validator'+(d.rawCode!==null?' • code '+d.rawCode:'')+'</div>';
-}catch(err){result.innerHTML='<div class="error">Could not reach the checker.</div>'}finally{btn.disabled=false;btn.textContent='Check'}});
+const apiBase=location.origin;
+let tracker=[];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function tick(){document.getElementById('now').textContent=new Date().toLocaleString('en-GB',{hour12:false}).replace(',',' ·')}
+setInterval(tick,1000);tick();
+
+async function loadTracker(){
+ const rows=document.getElementById('rows'); rows.innerHTML='<div class="spinner">Checking tracked names against Roblox…</div>';
+ try{
+  const r=await fetch(apiBase+'/api/tracker'); const d=await r.json(); if(!r.ok)throw new Error(d.error);
+  tracker=d.rows||[]; renderTracker();
+ }catch(e){rows.innerHTML='<div class="empty">Tracker unavailable: '+esc(e.message)+'</div>'}
+}
+function renderTracker(){
+ let a=[...tracker], len=document.getElementById('length').value, min=+document.getElementById('minSearches').value||0;
+ if(len!=='Any')a=a.filter(x=>len==='6+'?x.name.length>=6:x.name.length==+len);
+ a=a.filter(x=>(x.searches||0)>=min);
+ document.getElementById('count').textContent=a.length;
+ const html=a.length?a.map(x=>{
+  const status=x.status==='available'?'AVAILABLE':'TRACKED';
+  let drop=x.dropAt?new Date(x.dropAt).toLocaleString('en-GB',{hour12:false}).replace(',',' · '):'—';
+  if(status==='AVAILABLE')drop='<b style="color:#78d29b">AVAILABLE</b>';
+  const profile=x.user?`<a class="nameLink" href="https://www.roblox.com/users/${x.user.id}/profile" target="_blank" title="Open Roblox profile">${esc(x.name)}</a>`:`<span class="nameLink" onclick="openUser('${esc(x.name)}')">${esc(x.name)}</span>`;
+  return `<div class="row"><span>${profile}</span><span class="drop">${drop} ${x.ageDays?`<span class="estimate">± ${Math.max(1,Math.round(x.ageDays))}d</span>`:''}</span><span class="searches">${x.searches||0}</span></div>`
+ }).join(''):'<div class="empty">No names match these filters.</div>';
+ document.getElementById('rows').innerHTML=html;
+ renderRecent();
+}
+function renderRecent(){
+ const recent=[...tracker].sort((a,b)=>(b.searches||0)-(a.searches||0)).slice(0,8);
+ document.getElementById('recent').innerHTML=recent.map((x,i)=>`<div class="r"><span class="time">~${Math.max(1,i+1)}d</span><a href="https://www.roblox.com/users/${x.user?.id||0}/profile" target="_blank">${esc(x.name)}</a><span>→</span><a href="https://www.roblox.com/users/${x.user?.id||0}/profile" target="_blank">${x.user?esc(x.user.name):'—'}</a></div>`).join('');
+}
+async function openUser(name){
+ const p=document.getElementById('profile');
+ try{
+  const r=await fetch(apiBase+'/api/user?username='+encodeURIComponent(name)); const d=await r.json();
+  if(!d.found){alert(name+' is not currently associated with a Roblox user.');return}
+  alert(`${d.username}\n${d.displayName}\nRoblox ID: ${d.id}\nSearches: ${d.searches}`);
+ }catch(e){alert('Could not load Roblox profile.')}
+}
+['length','language','minSearches'].forEach(id=>document.getElementById(id).addEventListener('change',()=>tracker.length&&renderTracker()));
+loadTracker();
 </script></body></html>

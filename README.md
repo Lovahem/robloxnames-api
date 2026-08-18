@@ -1,22 +1,26 @@
-# RobloxNames v2 — live checker
+# RobloxNames v3 — Tracker
 
-This version is a real Node/Express app, not a static mockup.
+This version adds a NameMC-style tracker view plus live Roblox profile linking.
 
-## Run locally
+## Features
+- Tracker table with name, drop-time/estimate field, and RobloxNames search count.
+- Length/search filters.
+- Live check of each tracked username against Roblox.
+- Clicking a tracked username opens its Roblox profile when the name currently resolves to a user.
+- `/api/user?username=` resolves a username to user ID, display name, creation date, ban state and avatar headshot.
+- `/api/history?userId=` uses Roblox's public username-history endpoint.
+- `/api/search?q=` provides Roblox user search results.
+- CORS is enabled so the API can be called from a Neocities frontend.
 
-1. Install Node.js 18+.
-2. Open a terminal in this folder.
-3. Run `npm install`.
-4. Run `npm start`.
-5. Open `http://localhost:3000`.
+## Deploy
+`npm install`
+`npm start`
 
-The backend exposes `/api/check?username=qz_` and proxies the request to Roblox's username validation service.
+On Render:
+Build command: `npm install`
+Start command: `npm start`
 
-### Security
-- No Roblox password is requested.
-- No `.ROBLOSECURITY` cookie is requested, stored, or accepted.
-- The checker keeps only a short 30-second in-memory cache.
-- The birthday value is sent only as a validation input; this app does not create accounts.
+## Important tracker note
+Roblox does not provide an official future "drop time" for usernames. The tracker therefore treats `dropAt` as our own observation/estimate field. A real NameMC-style drop tracker needs a scheduled worker that repeatedly checks tracked names, records status transitions, and calculates estimates.
 
-### Important
-Roblox can rate-limit or change its validation service. If that happens, the UI reports an error rather than pretending a name is available.
+The current `data/tracker.json` contains demo names so the UI has something to show immediately.
